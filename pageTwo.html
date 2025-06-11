@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SANCTORY - Membership Information</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Times New Roman", serif;
+        background: #f3efe8;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        color: #000;
+      }
+
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: clamp(15px, 3vw, 20px);
+        width: 100%;
+      }
+
+      /* Header */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: clamp(15px, 3vw, 20px) 0;
+        margin-bottom: clamp(20px, 5vw, 40px);
+      }
+
+      .brand-logo-small {
+        width: clamp(150px, 20vw, 200px);
+        height: clamp(50px, 10vw, 80px);
+        display: flex;
+        align-items: center;
+      }
+
+      .brand-logo-small img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .members-login {
+        background: transparent;
+        border: 2px solid #000;
+        color: #000;
+        padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 24px);
+        font-size: clamp(12px, 2vw, 14px);
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: inherit;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .members-login:hover {
+        background: #000;
+        color: #f3efe8;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Main content */
+      .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: clamp(20px, 4vw, 40px) 0;
+        max-width: 800px;
+        width: 100%;
+      }
+
+      .page-title {
+        font-family: "Gotham", sans-serif;
+        font-weight: 100;
+        font-size: clamp(20px, 4vw, 28px);
+        line-height: 152%;
+        letter-spacing: 0%;
+        text-transform: uppercase;
+        color: #000;
+        margin-bottom: clamp(30px, 6vw, 50px);
+        text-align: left;
+      }
+
+      .faq-section {
+        margin-bottom: clamp(40px, 6vw, 60px);
+      }
+
+      .faq-item {
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+      }
+
+      .faq-question {
+        font-family: "Gotham", sans-serif;
+        font-weight: 800;
+        font-size: clamp(11px, 2vw, 12px);
+        line-height: 150%;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: #000;
+        padding: 20px 0;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+        border: none;
+        background: transparent;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .faq-question:hover {
+        color: #333;
+      }
+
+      .faq-toggle {
+        font-size: 18px;
+        transition: transform 0.3s ease;
+        margin-left: 20px;
+        transform: rotate(0deg);
+      }
+
+      .faq-question.collapsed .faq-toggle {
+        transform: rotate(0deg);
+      }
+
+      .faq-question:not(.collapsed) .faq-toggle {
+        transform: rotate(180deg);
+      }
+
+      .faq-toggle::before {
+        content: "▼";
+      }
+
+      .faq-answer {
+        padding: 0;
+        font-family: "Times New Roman", serif;
+        font-size: clamp(14px, 2.5vw, 16px);
+        line-height: 160%;
+        color: #333;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        opacity: 0;
+      }
+
+      .faq-answer.open {
+        max-height: 200px;
+        padding: 0 0 20px 0;
+        opacity: 1;
+      }
+
+      /* Action buttons */
+      .action-buttons {
+        display: flex;
+        gap: clamp(15px, 4vw, 30px);
+        margin-bottom: clamp(20px, 3vw, 30px);
+        margin-top: auto;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: stretch;
+        width: 100%;
+      }
+
+      .btn {
+        font-family: "Gotham", sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1;
+        letter-spacing: 0;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 14px 28px;
+        border: 2px solid #000;
+        background: transparent;
+        color: #000;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        flex: 0 0 auto;
+      }
+
+      .btn:hover {
+        background: #000;
+        color: #f5f3f0;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Footer */
+      .footer {
+        padding: clamp(20px, 4vw, 30px) 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: auto;
+        width: 100%;
+      }
+
+      .social-links {
+        display: flex;
+        gap: clamp(20px, 4vw, 30px);
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+      }
+
+      .social-link {
+        color: #000;
+        text-decoration: none;
+        font-size: clamp(12px, 2vw, 14px);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 8px 12px;
+        min-height: 40px;
+      }
+
+      .social-link:hover {
+        color: #333;
+      }
+
+      /* Mobile optimizations */
+      @media (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          gap: 20px;
+          align-items: center;
+        }
+
+        .action-buttons {
+          flex-direction: column;
+          width: 100%;
+          max-width: 300px;
+          margin: auto auto clamp(20px, 3vw, 30px) auto;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .btn {
+          width: 100%;
+          max-width: 250px;
+        }
+
+        .faq-answer.open {
+          max-height: 300px;
+        }
+
+        .social-links {
+          flex-direction: row;
+          gap: 20px;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .social-links {
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="brand-logo-small">
+          <img src="assets/img1.svg" alt="SANCTORY Logo" />
+        </div>
+        <button class="members-login">Members Login</button>
+      </header>
+
+      <main class="main-content">
+        <h1 class="page-title">Membership Information</h1>
+
+        <div class="faq-section">
+          <div class="faq-item">
+            <button class="faq-question collapsed" onclick="toggleFaq(this)">
+              <span>Why am I not able to register on Sanctory?</span>
+              <span class="faq-toggle"></span>
+            </button>
+            <div class="faq-answer">
+              Sanctory operates on an invitation-only basis. Occasionally, we
+              allow referrals from existing members to invite friends and
+              family. This quiet, considered approach allows us to plan demand
+              in a way that aligns with the natural pace of our producers, many
+              of whom work with traditional, small-scale methods. By doing so,
+              we ensure that quality remains consistent across every batch and
+              each member receives a product that is genuinely special, without
+              any compromise.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question collapsed" onclick="toggleFaq(this)">
+              <span>How can I join Sanctory?</span>
+              <span class="faq-toggle"></span>
+            </button>
+            <div class="faq-answer">
+              You can express your interest in joining by following the link
+              provided. Each quarter, depending on product availability and our
+              capacity, we extend invitations to select individuals who resonate
+              with our purpose. Once approved, you will receive a welcome kit
+              and the option to choose between direct debit or pay-per-use
+              access. From there, you will be able to explore our collection and
+              make use of our concierge service, a quiet but thoughtful offering
+              that helps you select products, discover new producers, or make
+              special requests.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question collapsed" onclick="toggleFaq(this)">
+              <span>Why isn't Sanctory open to all?</span>
+              <span class="faq-toggle"></span>
+            </button>
+            <div class="faq-answer">
+              Our purpose ‘fine things for fine people’ comes with a
+              responsibility to protect the integrity of what we offer. Every
+              product is born of small-scale, often generational production
+              methods: slow-pressed oils, honey drawn without heat, pulses and
+              grains harvested without chemical interference. We work directly
+              with producers, not through middlemen, and every product undergoes
+              a thorough process to understand its entire journey, from soil to
+              shelf. Because these goods are made in limited quantities using
+              traditional, non-industrial techniques, we are able to serve only
+              a select community. This is not exclusivity for its own sake, but
+              a commitment to maintaining the uncompromising quality you can
+              trust.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question collapsed" onclick="toggleFaq(this)">
+              <span>What kind of products are available on Sanctory?</span>
+              <span class="faq-toggle"></span>
+            </button>
+            <div class="faq-answer">
+              We offer a curated selection of pantry essentials — including
+              oils, pulses, honey, spreads, salts, and more. Every product is
+              100% organic and crafted through natural, time-honoured practices
+              that prioritise soil health, seasonal rhythms, and thoughtful
+              harvesting. We also take great care to ensure our products have
+              little to no contact with plastic throughout their journey,
+              preserving not just the environment, but the purity and wellbeing
+              of what ends up on your plate. At Sanctory, we believe curation is
+              not about abundance, but intention and every item we share carries
+              depth, not distraction.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question collapsed" onclick="toggleFaq(this)">
+              <span>Are the products on Sanctory very expensive?</span>
+              <span class="faq-toggle"></span>
+            </button>
+            <div class="faq-answer">
+              Not always. While some of our offerings may be priced higher than
+              mass-market or loosely labelled “organic” alternatives, many are
+              surprisingly affordable. What defines our pricing is not trend or
+              prestige, but the integrity of the process — from the purity of
+              the source to the care of the hands that craft each item, without
+              industrial shortcuts. We price our products to honour the time,
+              skill, and dedication behind them, not to create a sense of luxury
+              for its own sake.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question collapsed" onclick="toggleFaq(this)">
+              <span
+                >Can I order the Sanctory products from a third-party
+                website?</span
+              >
+              <span class="faq-toggle"></span>
+            </button>
+            <div class="faq-answer">
+              No. Sanctory does not participate in quick-commerce platforms or
+              third-party stores. Our products are only available through our
+              website or, in time, through select Sanctory boutiques. Each order
+              comes directly from us — carefully packed and shipped to your
+              door, without compromise.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question collapsed" onclick="toggleFaq(this)">
+              <span
+                >Once I join Sanctory, will I be able to get all types of
+                products from every famous producer?</span
+              >
+              <span class="faq-toggle"></span>
+            </button>
+            <div class="faq-answer">
+              Our approach is intentionally selective. Rather than offering a
+              broad catalogue of familiar brands, we carefully choose no more
+              than two producers per category whose work truly embodies our
+              values. These choices come from thorough sourcing, farm visits,
+              lab testing, and a deep respect for tradition. This focused
+              curation is designed to bring you clarity and confidence, helping
+              you discover exceptional products without feeling overwhelmed.
+            </div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <a href="#" class="btn">Return to Home</a>
+          <a href="#" class="btn">Producer Guide</a>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="social-links">
+          <a href="#" class="social-link">Instagram</a>
+          <a href="#" class="social-link">LinkedIn</a>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      function toggleFaq(element) {
+        const answer = element.nextElementSibling;
+        const isCollapsed = element.classList.contains("collapsed");
+
+        // Close all other FAQs
+        document.querySelectorAll(".faq-question").forEach((q) => {
+          q.classList.add("collapsed");
+          q.nextElementSibling.classList.remove("open");
+        });
+
+        // Toggle current FAQ
+        if (isCollapsed) {
+          element.classList.remove("collapsed");
+          answer.classList.add("open");
+        } else {
+          element.classList.add("collapsed");
+          answer.classList.remove("open");
+        }
+      }
+    </script>
+  </body>
+</html>

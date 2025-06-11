@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SANCTORY - For The Ones Who Make</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Times New Roman", serif;
+        background: #f3efe8;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        color: #000;
+        line-height: 1.6;
+      }
+
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: clamp(15px, 3vw, 20px);
+        width: 100%;
+      }
+
+      /* Header */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: clamp(15px, 3vw, 20px) 0;
+        margin-bottom: clamp(30px, 5vw, 50px);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo-icon {
+        width: clamp(140px, 5vw, 150px);
+        height: clamp(90px, 5vw, 100px);
+        fill: #000;
+        transition: all 0.3s ease;
+      }
+
+      .logo-text {
+        font-size: clamp(20px, 3vw, 28px);
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .members-login {
+        background: transparent;
+        border: 2px solid #000;
+        color: #000;
+        padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 24px);
+        font-size: clamp(12px, 2vw, 14px);
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: inherit;
+        text-transform: uppercase;
+      }
+
+      .members-login:hover {
+        background: #000;
+        color: #f3efe8;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Main content */
+      .main-content {
+        flex: 1;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: clamp(20px, 5vw, 40px) 0;
+      }
+
+      .main-title {
+        font-family: Gotham, sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 100%;
+        letter-spacing: 5%;
+        text-align: center;
+        vertical-align: middle;
+        text-transform: uppercase;
+        margin-bottom: clamp(30px, 6vw, 50px);
+        color: #000;
+      }
+
+      .intro-quote {
+        font-family: Gotham, sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        margin-bottom: clamp(30px, 6vw, 50px);
+        color: #333;
+        padding: 0 clamp(20px, 5vw, 40px);
+      }
+
+      .content-section {
+        margin-bottom: clamp(40px, 8vw, 60px);
+      }
+
+      .content-section.with-border {
+        border-top: 0.5px solid #000;
+        margin-bottom: 10px;
+        padding-top: clamp(20px, 4vw, 30px);
+        width: 714px;
+        max-width: 100%;
+      }
+
+      .section-title {
+        font-family: Gotham, sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 100%;
+        letter-spacing: 5%;
+        text-align: left;
+        vertical-align: middle;
+        text-transform: uppercase;
+        margin-bottom: clamp(20px, 4vw, 30px);
+        color: #000;
+      }
+
+      .section-description {
+        font-family: Gotham, sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        margin-bottom: clamp(20px, 4vw, 25px);
+        color: #333;
+      }
+
+      .feature-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .feature-list li {
+        font-size: clamp(14px, 2vw, 16px);
+        margin-bottom: clamp(8px, 2vw, 12px);
+        color: #333;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .feature-list li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #000;
+        font-weight: bold;
+      }
+
+      /* Reach out box */
+      .reach-out-box {
+        border: 1px solid #333;
+        width: 717px;
+        height: 461px;
+        padding: 52px 64px;
+        margin: clamp(40px, 8vw, 60px) 0 clamp(40px, 8vw, 60px) 0;
+        background: #f3efe8;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      .reach-out-title {
+        font-family: Gotham, sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 100%;
+        letter-spacing: 5%;
+        text-align: center;
+        vertical-align: middle;
+        text-transform: uppercase;
+        margin: 0;
+        color: #000;
+      }
+
+      .reach-out-description {
+        font-family: Gotham, sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 150%;
+        margin: 0;
+        color: #333;
+        text-align: center;
+      }
+
+      .reach-out-list-intro {
+        font-family: Gotham, sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 150%;
+        margin: 0;
+        color: #333;
+        text-align: left; /* changed from center to left */
+      }
+
+      .reach-out-list {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+        margin: 0;
+        display: inline-block;
+      }
+
+      .reach-out-list li {
+        font-family: Gotham, sans-serif;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 150%;
+        margin-bottom: clamp(8px, 2vw, 10px);
+        color: #333;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .reach-out-list li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #000;
+        font-weight: bold;
+      }
+
+      .reach-out-footer {
+        font-family: Gotham, sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #000;
+        margin: 0;
+        text-align: center;
+      }
+
+      /* Action buttons */
+      .action-buttons {
+        display: flex;
+        gap: clamp(15px, 4vw, 30px);
+        justify-content: center;
+        margin: clamp(40px, 8vw, 60px) 0;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        font-family: "Times New Roman", serif;
+        font-weight: 400;
+        font-size: clamp(12px, 2vw, 14px);
+        line-height: 100%;
+        letter-spacing: 1px;
+        text-align: center;
+        text-transform: uppercase;
+        padding: clamp(12px, 2.5vw, 16px) clamp(24px, 5vw, 32px);
+        border: 2px solid #000;
+        background: transparent;
+        color: #000;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn:hover {
+        background: #000;
+        color: #f3efe8;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-primary {
+        background: #000;
+        color: #f3efe8;
+      }
+
+      .btn-primary:hover {
+        background: #333;
+        color: #f3efe8;
+      }
+
+      /* Footer */
+      .footer {
+        padding: clamp(20px, 4vw, 30px) 0;
+        display: flex;
+        justify-content: center;
+        margin-top: auto;
+      }
+
+      .social-links {
+        display: flex;
+        gap: clamp(20px, 4vw, 30px);
+        align-items: center;
+      }
+
+      .social-link {
+        color: #000;
+        text-decoration: none;
+        font-size: clamp(12px, 2vw, 14px);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+      }
+
+      .social-link:hover {
+        color: #333;
+      }
+
+      /* Mobile optimizations */
+      @media (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          gap: 20px;
+          text-align: center;
+        }
+
+        .action-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn {
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .footer {
+          justify-content: center;
+        }
+
+        .social-links {
+          margin-left: 0;
+        }
+
+        .reach-out-box {
+          width: 100%;
+          height: auto;
+          padding: 30px 20px;
+          gap: 20px;
+        }
+
+        .content-section.with-border {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .social-links {
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <img src="./assets/img1.svg" alt="Sanctory Logo" class="logo-icon" />
+        </div>
+        <button class="members-login">Members Login</button>
+      </header>
+
+      <main class="main-content">
+        <h1 class="main-title">For The Ones Who Make</h1>
+
+        <p class="intro-quote">
+          "We are not here to commodify your craft. We are here to understand
+          it, protect, and share its story with our members, who will appreciate
+          and celebrate your work with the same care and reverence that you
+          bring to it."
+        </p>
+
+        <div class="content-section">
+          <p class="section-description">
+            At Sanctory, we believe the finest things are not mass-produced —
+            they are grown, harvested, made, and refined over time, often by
+            hands that have done so for generations. If you are a grower,
+            distiller, farmer, beekeeper, miller or maker who shares this way of
+            life, we invite you quietly and without urgency to reach out.
+          </p>
+        </div>
+
+        <div class="content-section with-border">
+          <h2 class="section-title">What We Look For</h2>
+          <p class="section-description">
+            We work with producers whose values align with ours — who believe in
+            process over pace, quality over scale, and stories over marketing.
+            We do not seek perfection. We seek truth.
+          </p>
+          <ul class="feature-list">
+            <li>Products made without industrial shortcuts</li>
+            <li>Traditional or generational knowledge in practice</li>
+            <li>Small-batch, seasonal or naturally limited production</li>
+            <li>Full traceability and respect for origin</li>
+            <li>No additives, artificial enhancements or plastic packaging</li>
+            <li>Honest materials and honest methods</li>
+            <li>A lived story, not a manufactured one</li>
+          </ul>
+        </div>
+
+        <div class="content-section with-border">
+          <h2 class="section-title">What You Can Expect</h2>
+          <p class="section-description">
+            Sanctory is not a transactional platform; it's a relationship. We
+            work with a small circle of producers and make no demands on volume
+            or pricing that would compromise your integrity.
+          </p>
+          <ul class="feature-list">
+            <li>Slow, respectful sourcing cycles</li>
+            <li>Transparent pricing and producer-first margins</li>
+            <li>No discounts or bundling that dilute value</li>
+            <li>Support in telling your story truthfully</li>
+            <li>A global but intimate audience that listens</li>
+          </ul>
+          <p class="section-description">
+            You will not find your work placed next to a dozen competitors. In
+            every category, we shortlist no more than two producers.
+          </p>
+        </div>
+
+        <div class="reach-out-box">
+          <h2 class="reach-out-title">Reach Out to Sanctory</h2>
+          <p class="reach-out-description">
+            If you feel your practice belongs here, we would love to listen.
+          </p>
+
+          <ul class="reach-out-list">
+            <li>The name of your farm, studio, distillery or practice</li>
+            <li>What you make</li>
+            <li>How you make it</li>
+            <li>Where you are based</li>
+            <li>A few photos or notes, if you like</li>
+            <li>How to reach you</li>
+          </ul>
+          <p class="reach-out-footer">We read every message with care.</p>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn btn-primary">Return to home</button>
+          <button class="btn">Explore membership</button>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="social-links">
+          <a href="#" class="social-link">Instagram</a>
+          <a href="#" class="social-link">LinkedIn</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

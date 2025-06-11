@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SANCTORY - Fine Things for Fine People</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Times New Roman", serif;
+        background: #f3efe8;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        color: #000;
+      }
+
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: clamp(15px, 3vw, 20px);
+        width: 100%;
+      }
+
+      /* Header */
+      .header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: clamp(15px, 3vw, 20px) 0;
+        margin-bottom: clamp(20px, 5vw, 40px);
+      }
+
+      .members-login {
+        background: transparent;
+        border: 2px solid #000;
+        color: #000;
+        padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 24px);
+        font-size: clamp(12px, 2vw, 14px);
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: inherit;
+        text-transform: uppercase;
+      }
+
+      .members-login:hover {
+        background: #000;
+        color: #f3efe8;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Main content */
+      .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(20px, 8vw, 80px) 0;
+      }
+
+      .brand-logo {
+        width: clamp(300px, 40vw, 400px);
+        height: clamp(100px, 20vw, 200px);
+        margin-bottom: clamp(20px, 5vw, 30px);
+        display: flex;
+        align-items: center;
+      }
+
+      .brand-logo img {
+        width: 200%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .tagline {
+        font-family: "Gotham", sans-serif;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 152%;
+        letter-spacing: 0%;
+        /* text-align: center; */
+        vertical-align: middle;
+        text-transform: uppercase;
+        color: #000;
+        margin-bottom: 40px;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: clamp(15px, 4vw, 30px);
+        margin-bottom: clamp(40px, 8vw, 60px);
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        font-family: "Gotham", sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: 0;
+        text-align: center;
+        vertical-align: middle;
+        text-transform: uppercase;
+
+        padding: 14px 28px;
+        border: 2px solid #000;
+        background: transparent;
+        color: #000;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background: #000;
+        color: #f5f3f0;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-primary {
+        background: #000;
+        color: #f5f3f0;
+      }
+
+      .btn-primary:hover {
+        background: #333;
+      }
+
+      /* Footer */
+      .footer {
+        padding: clamp(20px, 4vw, 30px) 0;
+        display: flex;
+        justify-content: flex-start; /* changed from flex-end */
+        margin-top: auto;
+      }
+
+      .social-links {
+        display: flex;
+        gap: clamp(20px, 4vw, 30px);
+        align-items: center;
+        margin-left: clamp(10px, 5vw, 50px); /* move to the left */
+      }
+
+      .social-link {
+        color: #000;
+        text-decoration: none;
+        font-size: clamp(12px, 2vw, 14px);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+      }
+
+      .social-link:hover {
+        color: #333;
+      }
+
+      /* Mobile optimizations */
+      @media (max-width: 768px) {
+        .action-buttons {
+          flex-direction: column;
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .footer {
+          justify-content: flex-start; /* was 'center', now stays left */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .social-links {
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <button class="members-login">Members Login</button>
+      </header>
+
+      <main class="main-content">
+        <div class="brand-logo">
+          <img src="assets/img1.svg" alt="SANCTORY Logo" />
+        </div>
+
+        <p class="tagline">Fine Things for Fine People</p>
+
+        <div class="action-buttons">
+          <button class="btn btn-primary">Explore Membership</button>
+          <button class="btn">Products Guide</button>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="social-links">
+          <a href="#" class="social-link">Instagram</a>
+          <a href="#" class="social-link">LinkedIn</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
